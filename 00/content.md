@@ -1,3 +1,7 @@
 # Example-Driven Rust #
 
-## Srinivas Kaza and Matthew Pfeiffer ##
+![Ferris](http://rustacean.net/assets/rustacean-orig-noshadow.png)
+
+#### Srinivas Kaza and Matthew Pfeiffer ####
+
+
