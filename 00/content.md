@@ -49,6 +49,17 @@
 
 ---
 
+# Safety #
+
+* No null pointers
+* No pointer aliasing
+* No default initialization
+* No invalid/dangling pointers
+* No double free
+* Resource Acquisition is Initialization
+
+---
+
 # Language Properties #
 
 * Statically Typed
