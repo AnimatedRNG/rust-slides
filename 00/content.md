@@ -326,6 +326,34 @@ fn get_book_cost(book: Option<&str>) -> f32 {
 
 ---
 
+# Ownership #
+
+* Every value in Rust is owned by a variable.
+
+* **There can only be one owner for a value at a given time**. 
+
+* When the owner goes out of scope, the variable is **dropped**.
+
+```rust
+fn enter_wonderland(entrant: String) {
+    println!("{} is in Wonderland forever!", entrant);
+}
+
+fn after_the_book_ends(person: String) {
+    println!("No one cares about this part")
+}
+
+fn main() {
+    let alice = String::from("Alice");
+    enter_wonderland(alice);
+
+    // Uncommenting this would be an error
+    //after_the_book_ends(alice);
+}
+```
+
+---
+
 # Sections #
 
 1. What is Rust and Why Should I Care?
