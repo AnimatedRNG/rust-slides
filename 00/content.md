@@ -61,7 +61,15 @@
 * Overflow handling
 * More explicit casting system
 
+---
 
+# Performance #
+
+* No garbage collection!
+* Compiles down to LLVM
+* Safety/ergonomic features (usually) don't have runtime costs
+  * Most of the magic happens at compile time
+* Explicit and automatic SIMD support
 
 ---
 
