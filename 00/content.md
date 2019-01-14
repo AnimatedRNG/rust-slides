@@ -100,3 +100,50 @@
 ---
 
 # Example Time! #
+
+
+---
+
+# Variables #
+
+* You can "bind" a variable with the `let` keyword
+
+```rust
+let name = "Alice";
+```
+
+* The compiler guesses the type, but you can specify it explicitly if you want. `name` is a `&str` (fixed-length string).
+
+```rust
+let name: &str = "Alice";
+```
+
+* Variables are **immutable** by default. `mut` makes variables mutable.
+
+```rust
+let mut name = String::from("Alice");
+name.push_str(" in Wonderland");
+```
+
+* `String` is the heap-allocated dynamic-sized string type.
+
+---
+
+# Bindings #
+
+* Mutability is bad though. Is there a better solution?
+
+```rust
+let name: &str = "Alice";
+let name: String = format!("Alice {}", "and Bob");
+```
+
+* Bindings can be shadowed. This has nothing to do with mutability!
+
+```rust
+let example = 1;
+let example = 2;
+let example = 3;
+
+// `example` is never mutated!
+```
