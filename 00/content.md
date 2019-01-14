@@ -253,7 +253,7 @@ if (title == null) {
 * This practice often causes unintended (and difficult to track) bugs. Rust introduces `Option`s to help handle these cases.
 
 ```rust
-let title: Option<(&str)> = Some("test");
+let title: Option<(&str)> = Some("Alice in Wonderland");
 ```
 
 * An option can either be `Some` or `None`. The `unwrap` function gets the contents of a book, and will `panic` if it is `None`.
