@@ -281,8 +281,8 @@ enum Suit {
 
 ```rust
 enum Color {
-    RGB(u8, u8, u8),
-    RGBA(u8, u8, u8, u8),
+    Rgb(u8, u8, u8),
+    Rgba(u8, u8, u8, u8),
 }
 ```
 
@@ -374,8 +374,8 @@ fn get_book_cost(book: Option<&str>) -> f32 {
 
 ```rust
 enum Color {
-    RGB(u8, u8, u8),
-    RGBA(u8, u8, u8, u8),
+    Rgb(u8, u8, u8),
+    Rgba(u8, u8, u8, u8),
 }
 
 let red = Color::RGB(255, 0, 0);
