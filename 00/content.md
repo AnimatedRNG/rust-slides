@@ -6,6 +6,14 @@
 
 ---
 
+# Sections #
+
+1. **What is Rust and Why Should I Care?**
+2. Example Time!
+3. Setting up Rust on Your Machine
+
+---
+
 # Who is using Rust? #
 
 ![Yelp](https://s3-media2.fl.yelpcdn.com/assets/srv0/styleguide/1ea40efd80f5/assets/img/brand_guidelines/yelp_fullcolor.png)
@@ -99,8 +107,11 @@
 
 ---
 
-# Example Time! #
+# Sections #
 
+1. **What is Rust and Why Should I Care?**
+2. Example Time!
+3. Setting up Rust on Your Machine
 
 ---
 
@@ -202,3 +213,67 @@ fn main() {
     println!("{}", get_publication_year(book_details));
 }
 ```
+
+# Installing Rust #
+
+- The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
+
+`curl https://sh.rustup.rs -sSf | sh`
+
+- To keep your rust up-to-date with the latest stable version of rust:
+
+`rustup update`
+
+- To check which version of Rust you have:
+
+`rustc --version`
+
+---
+
+# Cargo #
+
+Cargo is a tool that helps you develop Rust programs. It does several things:
+    - Runs tasks: cargo build (compile your app), cargo test (test your app), cargo run (run your app)
+    - Start a project: cargo new, cargo init
+
+Cargo is also the package manager for Rust. This means that you can use Cargo to install and manage bits of other people's code.
+    - A program or library is called a "crate".
+    - A package contains one or more crates.
+    - You can find Crates on http://crates.io
+    - You list the Crates you want to use in the Cargo.toml file
+    - Your app keeps track of what crates you are using in the Cargo.lock file
+
+---
+
+# Creating a New Project #
+
+- `cargo new --bin name-of-my-project`
+    - Use `--lib` if you are writing a library (you don't want to compile your code into an executable).
+- `cd name-of-my-project`
+
+This creates several files and folders for you automatically:
+    - `Cargo.toml`: metadata about your project and its dependencies
+    - `.gitignore`: ignores compiled files built by Rust
+    - `src/*.rs`: where your Rust code goes
+
+---
+
+# Nice Tool: `rustfmt` to Format your Code #
+
+To install:
+
+`rustup component add rustfmt`
+
+To reformat all your code:
+
+`cargo fmt`
+
+---
+
+# Sections #
+
+1. **What is Rust and Why Should I Care?**
+2. Example Time!
+3. Setting up Rust on Your Machine
+
+---
