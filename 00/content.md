@@ -45,6 +45,8 @@
 2. Performance
 3. Ergonomics
 
+**These goals are not contradictory!**
+
 ---
 
 # Language Properties #
