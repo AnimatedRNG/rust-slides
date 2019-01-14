@@ -14,19 +14,23 @@
 
 ---
 
+# History #
+
+Rust is really new!
+
+* Introduced by Mozilla in 2010
+* 1.0 released in 2015
+* Currently on 1.31.1
+
+Most languages we use first appeared in the 90s or earlier.
+
+---
+
 # Who is using Rust? #
 
 ![Yelp](https://s3-media2.fl.yelpcdn.com/assets/srv0/styleguide/1ea40efd80f5/assets/img/brand_guidelines/yelp_fullcolor.png)
 
 ![Dropbox](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Dropbox_logo_%282013%29.svg/858px-Dropbox_logo_%282013%29.svg.png)
-
----
-
-# History #
-
-* Introduced by Mozilla in 2010
-* 1.0 released in 2015
-* Currently on 1.31.1
 
 ---
 
