@@ -147,3 +147,58 @@ let example = 3;
 
 // `example` is never mutated!
 ```
+
+---
+
+# Primitive Types #
+
+* Numeric types include width in the type
+  * Unsigned types: `u8`, `u16`, `u32`, `u64`, `usize`
+  * Signed types: `i8`, `i16`, `i32`, `i64`, `isize`
+  * Floating-point types: `f32`, `f64`
+  
+* Fixed-size primitive arrays
+
+```rust
+let example_array: [i32; 3] = [1, 1, 1];
+
+// Equivalent to the above
+let example_array: [i32; 3] = [1; 3];
+```
+
+* Slices
+
+```rust
+let example_array: [i32; 3] = [1, 1, 1];
+
+let example_slice: &[i32] = &example_array[0..1];
+```
+
+---
+
+# Primitive Types (continued) #
+
+* Rust has tuples and simple destructuring. Tuples are indexed with the `.` operator.
+
+```rust
+let book_details = ("Alice in Wonderland", "Caroll", 1865);
+
+// Note that _ ignores a binding
+let (title, _, year) = book_details;
+
+println!("{} was printed in {}", title, year);
+```
+
+* Functions
+
+```rust
+fn get_publication_year(book_details: (&str, &str, i32)) -> i32 {
+    book_details.2
+}
+
+fn main() {
+    let book_details = ("Alice in Wonderland", "Caroll", 1865);
+
+    println!("{}", get_publication_year(book_details));
+}
+```
