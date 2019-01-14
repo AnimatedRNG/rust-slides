@@ -381,28 +381,86 @@ fn main() {
 # Cargo #
 
 Cargo is a tool that helps you develop Rust programs. It does several things:
-* Runs tasks: cargo build (compile your app), cargo test (test your app), cargo run (run your app)
-* Start a project: cargo new, cargo init
+* Runs tasks:
+  * `cargo build` (compile your app)
+  * `cargo test` (test your app)
+  * `cargo run` (run your app)
+* Start a project: `cargo new`, `cargo init`
 
-Cargo is also the package manager for Rust. This means that you can use Cargo to install and manage bits of other people's code.
-* A program or library is called a "crate".
-* A package contains one or more crates.
-* You can find Crates on http://crates.io
-* You list the Crates you want to use in the Cargo.toml file
-* Your app keeps track of what crates you are using in the Cargo.lock file
+Cargo is also the package manager for Rust.
+  * A program or library is called a "crate".
+  * A package contains one or more crates.
+  * You can find Crates on http://crates.io
+  * You list the Crates you want to use in the Cargo.toml file
 
 ---
 
 # Creating a New Project #
 
-* `cargo new --bin name-of-my-project`
-  * Use `--lib` if you are writing a library (you don't want to compile your code into an executable).
-* `cd name-of-my-project`
+`cargo new --bin name-of-my-project`
+* Use `--lib` if you are writing a library (you don't want to compile your code into an executable).
+`cd name-of-my-project`
 
 This creates several files and folders for you automatically:
 * `Cargo.toml`: metadata about your project and its dependencies
 * `.gitignore`: ignores compiled files built by Rust
 * `src/*.rs`: where your Rust code goes
+
+---
+
+## Cargo.toml is not a Makefile ##
+
+Cargo uses Cargo.toml for project metadata and dependencies.
+
+```cargo
+[package]
+name = "basementdb"
+version = "0.1.0"
+authors = ["Matthew Pfeiffer <spferical@gmail.com>",
+           "Srinivas Kaza <kaza@mit.edu>"]
+
+[dependencies]
+bincode = "1.0.0"
+data-encoding = "2.1.1"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+base64 = "0.9.0"
+config = "0.8"
+sodiumoxide = "0.0.16"
+bufstream = "0.1"
+scoped_threadpool = "0.1.9"
+chrono = "0.4"
+rand = "0.4.2"
+clap = "2.3.2"
+```
+---
+
+# `cargo test`
+
+* A test is any function annotated with `#[test]`
+* `cargo test` runs all tests in your project.
+
+```rust
+#[test]
+fn it_works() {
+    assert_eq!(2 + 2, 4);
+}
+```
+
+</br>
+
+```bash
+$ cargo test
+   Compiling name-of-my-project v0.1.0 (/home/matthew/dev/name-of-my-project)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.65s
+     Running target/debug/deps/name_of_my_project-c45ef0564e3373a0
+
+running 1 test
+test it_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out```k
+```
 
 ---
 
