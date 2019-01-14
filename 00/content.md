@@ -240,6 +240,92 @@ let title = if is_sequel(book) {
 
 ---
 
+# Options #
+
+* In many languages, `null` is often used to signify an empty object
+
+```java
+if (title == null) {
+    //...
+}
+```
+
+* This practice often causes unintended (and difficult to track) bugs. Rust introduces `Option`s to help handle these cases.
+
+```rust
+let title: Option<(&str)> = Some("test");
+```
+
+* An option can either be `Some` or `None`. The `unwrap` function gets the contents of a book, and will `panic` if it is `None`.
+
+---
+
+# Conditionals #
+
+* Like practically every other language, Rust has `if` statements.
+
+```rust
+fn print_book_title(title: Option<(&str)>) {
+    // parentheses are not needed
+    if title.is_none() {
+        return;
+    } else {
+        println!("{}", title.unwrap());
+    }
+}
+```
+
+* While `if` statements are useful, we have better tools at our disposal.
+
+---
+
+# Pattern Matching #
+
+* The match statement/expression is like a more powerful form of the `switch` statement.
+
+```rust
+let legs = 3;
+let riddle_answer = match legs {
+    2 => "adult",
+    3 => "elderly",
+    4 => "infant",
+    _ => "idk"
+};
+```
+
+* Tuples can be destructured inside of patterns
+
+```rust
+let aiw = ("Alice in Wonderland", "Caroll", 1865);
+let ttlg = ("Through the Looking-Glass", "Caroll", 1865);
+match aiw {
+    ("Alice in Wonderland", "Caroll", 1865) => println!("Great!"),
+    ("Alice in Wonderland", "Caroll", _) => println!("Wrong year!"),
+    ("Alice in Wonderland", _, 1865) => println!("Wrong author!"),
+    _ => println!("I don't have anything to say about that."),
+};
+```
+---
+
+# Pattern Matching #
+
+* Using the `match` statement on `Option`s is very common.
+
+```rust
+fn get_book_cost(book: Option<&str>) -> f32 {
+    match book {
+        Some("Alice in Wonderland") => 20.0,
+        Some(_) => 1.0,
+        None => 0.0,
+    }
+}
+```
+
+* Note that we can shadow bindings within patterns!
+
+
+---
+
 # Installing Rust #
 
 - The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
