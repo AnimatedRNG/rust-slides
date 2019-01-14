@@ -70,6 +70,17 @@
 * Safety/ergonomic features (usually) don't have runtime costs
   * Most of the magic happens at compile time
 * Explicit and automatic SIMD support
+* Eager evaluation
+
+---
+
+# Ergonomics #
+
+* Variables are immutable by default
+* Pattern matching
+* Iterators
+* First-class functions
+* Algebraic datatypes
 
 ---
 
