@@ -214,6 +214,8 @@ fn main() {
 }
 ```
 
+---
+
 # Installing Rust #
 
 - The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
