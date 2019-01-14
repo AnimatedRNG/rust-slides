@@ -326,6 +326,36 @@ fn get_book_cost(book: Option<&str>) -> f32 {
 
 ---
 
+# Looping #
+
+* `loop` loops forever
+
+```rust
+loop {
+    println!("Looping forever!")
+}
+```
+
+* `for` loops will loop upon an iterator (or range)
+
+```rust
+for i in 0..10 {
+    println!("i is {}", i);
+}
+```
+
+* Of course `while` loops are supported as well
+
+```rust
+let mut i = 0;
+
+while i < 10 {
+    println!("i is {}", i);
+    i += 1;
+}
+```
+---
+
 # Ownership #
 
 * Every value in Rust is owned by a variable.
