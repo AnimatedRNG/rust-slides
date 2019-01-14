@@ -242,15 +242,15 @@ let title = if is_sequel(book) {
 
 # Installing Rust #
 
-- The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
+* The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
 
 `curl https://sh.rustup.rs -sSf | sh`
 
-- To keep your rust up-to-date with the latest stable version of rust:
+* To keep your rust up-to-date with the latest stable version of rust:
 
 `rustup update`
 
-- To check which version of Rust you have:
+* To check which version of Rust you have:
 
 `rustc --version`
 
@@ -259,34 +259,34 @@ let title = if is_sequel(book) {
 # Cargo #
 
 Cargo is a tool that helps you develop Rust programs. It does several things:
-    - Runs tasks: cargo build (compile your app), cargo test (test your app), cargo run (run your app)
-    - Start a project: cargo new, cargo init
+* Runs tasks: cargo build (compile your app), cargo test (test your app), cargo run (run your app)
+* Start a project: cargo new, cargo init
 
 Cargo is also the package manager for Rust. This means that you can use Cargo to install and manage bits of other people's code.
-    - A program or library is called a "crate".
-    - A package contains one or more crates.
-    - You can find Crates on http://crates.io
-    - You list the Crates you want to use in the Cargo.toml file
-    - Your app keeps track of what crates you are using in the Cargo.lock file
+* A program or library is called a "crate".
+* A package contains one or more crates.
+* You can find Crates on http://crates.io
+* You list the Crates you want to use in the Cargo.toml file
+* Your app keeps track of what crates you are using in the Cargo.lock file
 
 ---
 
 # Creating a New Project #
 
-- `cargo new --bin name-of-my-project`
-    - Use `--lib` if you are writing a library (you don't want to compile your code into an executable).
-- `cd name-of-my-project`
+* `cargo new --bin name-of-my-project`
+  * Use `--lib` if you are writing a library (you don't want to compile your code into an executable).
+* `cd name-of-my-project`
 
 This creates several files and folders for you automatically:
-    - `Cargo.toml`: metadata about your project and its dependencies
-    - `.gitignore`: ignores compiled files built by Rust
-    - `src/*.rs`: where your Rust code goes
+* `Cargo.toml`: metadata about your project and its dependencies
+* `.gitignore`: ignores compiled files built by Rust
+* `src/*.rs`: where your Rust code goes
 
 ---
 
-# Nice Tool: `rustfmt` to Format your Code #
+# `rustfmt` #
 
-To install:
+`rustfmt` is a handy tool that can format your code! To install:
 
 `rustup component add rustfmt`
 
