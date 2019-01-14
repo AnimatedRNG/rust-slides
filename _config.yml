@@ -1,0 +1,6 @@
+# Site settings
+title: "Example-Driven Rust"
+email: "kaza@mit.edu"
+
+# Build settings
+markdown: kramdown
