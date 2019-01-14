@@ -6,6 +6,14 @@
 
 ---
 
+# Sections #
+
+1. **What is Rust and Why Should I Care?**
+2. Example Time!
+3. Setting up Rust on Your Machine
+
+---
+
 # Who is using Rust? #
 
 ![Yelp](https://s3-media2.fl.yelpcdn.com/assets/srv0/styleguide/1ea40efd80f5/assets/img/brand_guidelines/yelp_fullcolor.png)
@@ -99,7 +107,11 @@
 
 ---
 
-# Example Time! #
+# Sections #
+
+1. What is Rust and Why Should I Care?
+2. **Example Time!**
+3. Setting up Rust on Your Machine
 
 
 ---
@@ -147,6 +159,14 @@ let example = 3;
 
 // `example` is never mutated!
 ```
+
+---
+
+# Sections #
+
+1. What is Rust and Why Should I Care?
+2. Example Time!
+3. **Setting up Rust on Your Machine**
 
 ---
 
