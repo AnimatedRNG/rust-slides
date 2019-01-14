@@ -242,6 +242,52 @@ let title = if is_sequel(book) {
 
 ---
 
+# Structs #
+
+* Rust doesn't have classes, but it does have structs!
+
+```rust
+struct Book {
+    title: String,
+    author: String,
+    year: u32,
+    isbn: u64,
+}
+
+let alice = Book {
+    title: String::from("Alice in Wonderland"),
+    author: String::from("Lewis Caroll"),
+    year: 1865,
+    isbn: 9780486275437
+};
+```
+
+---
+
+# Enums #
+
+* Rust also has enums (somewhat akin to `union`s in C).
+
+```rust
+enum Suit {
+    Diamonds,
+    Clubs,
+    Hearts,
+    Spades,
+}
+```
+
+* Rust also has support for tagged enumerations
+
+```rust
+enum Color {
+    RGB(u8, u8, u8),
+    RGBA(u8, u8, u8, u8),
+}
+```
+
+---
+
 # Options #
 
 * In many languages, `null` is often used to signify an empty object
@@ -324,7 +370,20 @@ fn get_book_cost(book: Option<&str>) -> f32 {
 }
 ```
 
-* Note that we can shadow bindings within patterns!
+* You can also pattern match on enums!
+
+```rust
+enum Color {
+    RGB(u8, u8, u8),
+    RGBA(u8, u8, u8, u8),
+}
+
+let red = Color::RGB(255, 0, 0);
+match red {
+    Color::RGBA(_, _, _, 0) => println!("Invisible"),
+    _ => println!("Very colorful!"),
+};
+```
 
 ---
 
