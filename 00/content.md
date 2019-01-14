@@ -176,7 +176,6 @@ let example = 3;
 
 ```rust
 let example_array: [i32; 3] = [1, 1, 1];
-
 // Equivalent to the above
 let example_array: [i32; 3] = [1; 3];
 ```
@@ -185,7 +184,6 @@ let example_array: [i32; 3] = [1; 3];
 
 ```rust
 let example_array: [i32; 3] = [1, 1, 1];
-
 let example_slice: &[i32] = &example_array[0..1];
 ```
 
@@ -260,7 +258,7 @@ if (title == null) {
 let title: Option<&str> = Some("Alice in Wonderland");
 ```
 
-* An option can either be `Some` or `None`. The `unwrap` function gets the contents of a book, and will `panic` if it is `None`.
+* An option can either be `Some` or `None`. The `unwrap` function gets the contents of an option, and will `panic` if it is `None`.
 
 ---
 
