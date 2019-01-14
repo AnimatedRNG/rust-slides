@@ -97,3 +97,6 @@
 * Linear
   * Objects are used exactly once
 
+---
+
+# Example Time! #
