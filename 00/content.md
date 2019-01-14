@@ -187,7 +187,7 @@ let example_slice: &[i32] = &example_array[0..1];
 
 ---
 
-# Primitive Types (continued) #
+# Primitive Types #
 
 * Rust has tuples and simple destructuring. Tuples are indexed with the `.` operator.
 
