@@ -37,3 +37,26 @@
 * Distributed Systems
   * noria, timely-dataflow, basementdb*
 
+---
+
+# Why use Rust? #
+
+1. Safety
+2. Performance
+3. Ergonomics
+
+---
+
+# Language Properties #
+
+* Statically Typed
+  * Types are determined at compile time
+* Inferred Types
+  * The compiler guesses the type
+* Memory Managed
+  * No garbage collector
+* Functional (kind of)
+  * Objects are generally immutable, operated on by functions
+* Linear
+  * Objects are used exactly once
+
