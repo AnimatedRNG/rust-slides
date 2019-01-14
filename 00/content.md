@@ -135,7 +135,7 @@ name.push_str(" in Wonderland");
 
 ```rust
 let name: &str = "Alice";
-let name: String = format!("Alice {}", "and Bob");
+let name: String = format!("Alice {}", "in Wonderland");
 ```
 
 * Bindings can be shadowed. This has nothing to do with mutability!
