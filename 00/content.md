@@ -57,6 +57,11 @@
 * No invalid/dangling pointers
 * No double free
 * Resource Acquisition is Initialization
+* Out-of-bounds handling
+* Overflow handling
+* More explicit casting system
+
+
 
 ---
 
