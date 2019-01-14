@@ -356,6 +356,20 @@ while i < 10 {
 ```
 ---
 
+# Looping #
+
+* We can loop on anything that provides an iterator interface!
+
+```rust
+let books = ["Alice in Wonderland", "Through the Looking-Glass"];
+
+for book in &books {
+    println!("You should read {}", book);
+}
+```
+
+---
+
 # Ownership #
 
 * Every value in Rust is owned by a variable.
