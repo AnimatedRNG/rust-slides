@@ -109,8 +109,8 @@
 
 # Sections #
 
-1. **What is Rust and Why Should I Care?**
-2. Example Time!
+1. What is Rust and Why Should I Care?
+2. **Example Time!**
 3. Setting up Rust on Your Machine
 
 ---
@@ -240,6 +240,14 @@ let title = if is_sequel(book) {
 
 ---
 
+# Sections #
+
+1. What is Rust and Why Should I Care?
+2. Example Time!
+3. **Setting up Rust on Your Machine**
+
+---
+
 # Installing Rust #
 
 * The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
@@ -296,10 +304,3 @@ To reformat all your code:
 
 ---
 
-# Sections #
-
-1. **What is Rust and Why Should I Care?**
-2. Example Time!
-3. Setting up Rust on Your Machine
-
----
