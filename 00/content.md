@@ -216,6 +216,30 @@ fn main() {
 
 ---
 
+# Expressions #
+
+* An expression is code that can be evaluated.
+
+* A function body can be an expression.
+
+```rust
+fn get_publication_year(book_details: (&str, &str, i32)) -> i32 {
+    book_details.2
+}
+```
+
+* `if` statements can be expressions too!
+
+```rust
+let title = if is_sequel(book) {
+    "Through the Looking-Glass"
+} else {
+    "Alice in Wonderland"
+};
+```
+
+---
+
 # Installing Rust #
 
 - The easiest way to install Rust is with rustup. Go to https://rustup.rs/ or:
