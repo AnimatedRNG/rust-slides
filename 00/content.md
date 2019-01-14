@@ -281,7 +281,7 @@ fn print_book_title(title: Option<(&str)>) {
 
 # Pattern Matching #
 
-* The match statement/expression is like a more powerful form of the `switch` statement.
+* The match statement/expression is like `switch`
 
 ```rust
 let legs = 3;
@@ -302,6 +302,7 @@ match aiw {
     ("Alice in Wonderland", "Caroll", 1865) => println!("Great!"),
     ("Alice in Wonderland", "Caroll", _) => println!("Wrong year!"),
     ("Alice in Wonderland", _, 1865) => println!("Wrong author!"),
+    (_, "Caroll", _) => println!("A great author!"),
     _ => println!("I don't have anything to say about that."),
 };
 ```
