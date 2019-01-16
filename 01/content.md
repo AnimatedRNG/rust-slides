@@ -45,29 +45,46 @@ result (N=3):
 
 # Ownership & Borrowing
 
-* Explicit owership is the biggest new feature Rust brings to the table!
+* Explicit ownership is the biggest new feature Rust brings to the table!
 * Checked at compile time!
 * Easy to find yourself "fighting the borrow checker" at first.
 
 ---
 
-# Variables have Scope
+# A Brief Digression -- Vectors #
+
+* Vectors are like fixed-size arrays but they are dynamically-sized.
 
 ```rust
-{
-    // s is not valid here; it has not been declared
-    
-    let s = "hello!";
-    
-    // s is valid here
-    
-}
+let mut tea_party = vec!["Mad Hatter", "March Hare", "Dormouse"];
+tea_party.push("Alice");
 
-// the scope is now over, and s is no longer valid
-
-println!("{}", s);
+// Equivalent to
+// let mut tea_party = Vec::new();
+// tea_party.push("Mad Hatter");
+// tea_party.push("March Hare");
+// tea_party.push("Dormouse");
+// tea_party.push("Alice");
 
 ```
+
+* `Vec::new` infers the type of the vector!
+
+---
+
+# Lambdas
+
+* Lambdas are inline functions
+
+```rust
+let add_alice = |mut people: Vec<&str>| people.push("Alice");
+let mut tea_party = vec!["Mad Hatter", "March Hare", "Dormouse"];
+add_alice(tea_party);
+```
+
+* Parameters are specified between the `|`s.
+
+* The compiler always infers the return type of the lambda and can often infer the parameters as well!
 
 ---
 
