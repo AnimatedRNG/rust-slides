@@ -229,6 +229,32 @@ But you can have mutable references!
 
 ---
 
+# Mutable Borrowing Rules
+
+```rust
+fn remove_alice_from_wonderland(people: &mut Vec<String>) {
+    let alice = String::from("Alice");
+    let alice_index = people
+        .iter()
+        .position(|element| element == &alice);
+    match alice_index {
+        Some(alice_index) => {
+            people.remove(alice_index);
+        }
+        None => (),
+    };
+}
+
+fn main() {
+    let wonderland = vec![String::from("Alice")];
+    remove_alice_from_wonderland(&mut wonderland);
+}
+```
+
+What's wrong here?
+
+---
+
 # Borrowing with References
 
 ```rust
