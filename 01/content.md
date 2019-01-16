@@ -312,3 +312,84 @@ Error! You cannot dereference alice into a variable binding, because that would 
 # Dereferencing
 
 Rust will auto-dereference when making method calls or passing references into functions.
+
+```rust
+fn string_length(s: &&String) -> usize {
+    s.len()
+}
+
+fn main() {
+    let alice = String::from("Alice");
+    let len = string_length(&&&&&&&&&&&&alice);
+
+    println!("The length of {} is {}", alice, len);
+}
+```
+
+---
+
+# Dereferencing
+
+You might need to explicitly dereference variables...
+* when writing to them
+* when there is other ambiguity
+
+```rust
+let mut foo = 10;
+let ref_foo = &mut foo;
+ref_foo = 100;
+println!("{}", *ref_foo + 4);
+```
+
+---
+
+# Borrowing Rules
+
+##### *"The Holy Grail of Rust"*
+
+1. One object may have many immutable references to it (&T).
+   OR exactly one mutable reference (&mut T) (not both).
+2. You can't keep borrowing something after it stops existing.
+
+![Grail](https://cis198-2016s.github.io/slides/01/img/holy-grail.jpg)
+
+---
+
+# Python: Runtime Bug
+```python
+x = [1, 2, 3, 4, 5]
+for y in x:
+    x.remove(y)
+print(x)
+# output: [2, 4]
+```
+
+# Rust: Compile-time Error
+```rust
+let mut v = vec![1, 2, 3, 4, 5];
+for x in &v {
+    v.remove(*x);
+}
+```
+Error: cannot borrow `v` as mutable because it is also borrowed as immutable.
+
+---
+
+# C/C++: Runtime Bug
+
+```c
+int *func(void) {
+    int num = 1234;
+    return &num;
+}
+```
+
+# Rust Compile-time Error
+
+```rust
+fn func() -> &isize {
+    let num = 1234;
+    &num
+}
+```
+Error: "missing lifetime specifier"
