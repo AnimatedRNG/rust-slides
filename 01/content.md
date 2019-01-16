@@ -1,4 +1,4 @@
-# Spot the Bug! #
+# Spot the Python Bug! #
 
 ```python
 # we want to create a 2D NxN grid full of ones
@@ -8,11 +8,12 @@ for x in range(N):
     grid.append(EMPTY)
     for y in range(N):
     grid[-1].append(1)
+print(grid)
 ```
 
 ---
 
-# Spot the Bug! #
+# Spot the Python Bug! #
 
 ```python
 # we want to create a 2D NxN grid full of ones
@@ -22,6 +23,7 @@ for x in range(N):
     grid.append(EMPTY)
     for y in range(N):
     grid[-1].append(1)
+print(grid)
 ```
 
 result (N=3):
@@ -48,6 +50,8 @@ result (N=3):
 * Explicit ownership is the biggest new feature Rust brings to the table!
 * Checked at compile time!
 * Easy to find yourself "fighting the borrow checker" at first.
+
+But first, some important language features that might be familiar...
 
 ---
 
@@ -412,8 +416,8 @@ Error: cannot borrow `v` as mutable because it is also borrowed as immutable.
 
 ```c
 int *func(void) {
-    int num = 1234;
-    return &num;
+    int x = 1234;
+    return &x;
 }
 ```
 
@@ -421,8 +425,8 @@ int *func(void) {
 
 ```rust
 fn func() -> &isize {
-    let num = 1234;
-    &num
+    let x = 1234;
+    &x
 }
 ```
 Error: "missing lifetime specifier"
