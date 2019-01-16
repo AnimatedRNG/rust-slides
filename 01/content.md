@@ -160,7 +160,7 @@ fn main() {
 }
 ```
 
-This works, but it's kinda tedius...
+This works, but it's kinda tedious...
 
 ---
 
