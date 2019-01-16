@@ -234,7 +234,7 @@ But you can have mutable references!
 ```rust
 fn remove_alice_from_wonderland(people: &mut Vec<String>) {
     let alice = String::from("Alice");
-    let alice_index = people
+    let alice_index: Option<usize> = people
         .iter()
         .position(|element| element == &alice);
     match alice_index {
