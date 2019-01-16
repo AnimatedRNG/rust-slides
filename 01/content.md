@@ -51,7 +51,7 @@ result (N=3):
 
 ---
 
-# A Brief Digression -- Vectors #
+# Vectors #
 
 * Vectors are like fixed-size arrays but they are dynamically-sized.
 
@@ -85,6 +85,22 @@ add_alice(tea_party);
 * Parameters are specified between the `|`s.
 
 * The compiler always infers the return type of the lambda and can often infer the parameters as well!
+
+---
+
+# Closures
+
+* Closures are lambdas that "capture" variables in their environment
+
+```rust
+let mut tea_party = vec!["Mad Hatter", "March Hare", "Dormouse"];
+let mut add_alice = || tea_party.push("Alice");
+add_alice();
+```
+
+* Now we can refer to variables that are defined outside of the closure.
+
+* But what happens if the closure outlives the variables that it is referencing?
 
 ---
 
