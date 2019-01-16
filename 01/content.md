@@ -104,6 +104,39 @@ add_alice();
 
 ---
 
+# Iterators
+
+* Iterators are a nice functional-programming alternative to `for` loops.
+
+* `iter` on a slice, array, or vector creates an iterator.
+
+```rust
+let people: Vec<(&str, usize)> = vec![
+    ("Mad Hatter", 43),
+    ("March Hare", 2),
+    ("Dormouse", 7),
+    ("Alice", 7),
+];
+let old_enough: Vec<&str> = people
+    .iter()
+    .filter(|(_, age)| age >= &18)
+    .map(|(name, _)| *name)
+    .collect();
+old_enough
+```
+
+* `map`, `filter`, `collect`
+
+---
+
+# This isn't slow
+
+* Iterator version takes 0.479 sec for 10M iterations.
+* Fairly optimized `for` loop takes 0.448 sec for 10M iterations.
+* With a bit more care, we can get even closer to the `for` loop performance.
+
+---
+
 # Ownership
 * A variable binding *takes ownership* of its data.
 * A piece of data only has *one* owner at a time.
