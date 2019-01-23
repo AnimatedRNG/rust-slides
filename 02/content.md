@@ -77,6 +77,8 @@ fn main() {
 }
 ```
 
+How will Rust know the drop() should fail?
+
 ---
 
 # Rust: Lifetimes #
@@ -234,8 +236,61 @@ impl<'a, 'b> Foo<'a, 'b> {
 
 ---
 
-# Conway's Game of Life #
+# Let's Fix HelloPrinter
 
+```rust
+struct HelloPrinter {
+    name: &str,
+}
+impl HelloPrinter {
+    fn new(name: &str) -> HelloPrinter {
+        HelloPrinter { name }
+    }
+    fn print_hello(&self) {
+        println!("Hello, {}!", self.name);
+    }
+}
+fn main() {
+    let world: String = "World".to_string();
+    let hp = HelloPrinter::new(&world);
+    hp.print_hello();
+}
+```
+
+Rust can't guess all the lifetimes involved here. Let's help!
+
+---
+
+# Let's Fix HelloPrinter
+
+```rust
+// name must live at least as long as HelloPrinter
+struct HelloPrinter<'a> {
+    name: &'a str,
+}
+
+// impl with lifetime 'a for HelloPrinter with lifetime 'a
+impl<'a> HelloPrinter<'a> {
+    // returns a HelloPrinter with same lifetime as name
+    fn new(name: &'a str) -> HelloPrinter<'a> {
+        HelloPrinter { name }
+    }
+    fn print_hello(&self) {
+        println!("Hello, {}!", self.name);
+    }
+}
+
+fn main() {
+    let world: String = "World".to_string();
+    let hp = HelloPrinter::new(&world);
+    drop(world); // this explicitly drops the value
+    hp.print_hello();
+}
+```
+
+---
+
+# Conway's Game of Life #
 
 1. Any live cell with **fewer than two** live neighbors **dies**, as if by underpopulation.
 2. Any live cell with **two or three** live neighbors **lives** on to the next generation.
