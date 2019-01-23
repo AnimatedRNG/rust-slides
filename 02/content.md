@@ -120,7 +120,7 @@ Also, storing references in structs requires explicit lifetimes.
 
 ---
 
-# Multiple Lifetime Parameters
+# Multiple Lifetimes
 
 ```rust
 fn borrow_x_or_y<'a>(x: &'a str, y: &'a str) -> &'a str;
@@ -130,7 +130,7 @@ fn borrow_x_or_y<'a>(x: &'a str, y: &'a str) -> &'a str;
 - `x` and `y` are borrowed as long as the returned reference exists.
 
 ```rust
-fn borrow_p<'a, 'b>(p: &'a str, q: &'b str) -> &'a str;```
+fn borrow_p<'a, 'b>(p: &'a str, q: &'b str) -> &'a str;
 ```
 
 - In this example, we return a reference with the same lifetime as `p`.
@@ -169,6 +169,8 @@ let s2;
 
 ---
 
+# Lifetimes in `structs`
+
 * You can tell rust that a lifetime "outlives" another.
 
 ```rust
@@ -195,8 +197,8 @@ let p = Pizza(vec![1, 2, 3, 4]);
 
 * The `'static` lifetime means a reference will never go invalid.
 * e.g. all `&str` literals have the `'static` lifetime because they're stored in a special portion of our program's memory.
-* 
-```
+
+```rust
 fn get_hello_world() -> &'static str {
     "Hello, World!"
 }
@@ -205,6 +207,8 @@ fn main() {
     println!("{}", get_hello_world());
 }
 ```
+
+---
 
 # Lifetimes in `impl` blocks.
 
