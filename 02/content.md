@@ -103,7 +103,7 @@ We can also *explicitly* provide one for Rust to use.
 fn string_length<'a>(s: &'a String) -> usize;
 ```
 
-`'a` AKA "tick-a" AKA "the lifetime a" is a named lifetime parameter.
+`'a` is a named lifetime parameter.
 
 The type `&'a String` is a reference to a String that lives at least as long as the lifetime `'a`.
 
