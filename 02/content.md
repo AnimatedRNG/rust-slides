@@ -231,3 +231,45 @@ impl<'a, 'b> Foo<'a, 'b> {
   }
 }
 ```
+
+---
+
+# Conway's Game of Life #
+
+
+1. Any live cell with **fewer than two** live neighbors **dies**, as if by underpopulation.
+2. Any live cell with **two or three** live neighbors **lives** on to the next generation.
+3. Any live cell with **more than three** live neighbors **dies**, as if by overpopulation.
+4. Any dead cell with **exactly three** live neighbors becomes a **live** cell, as if by reproduction.
+
+![Gosper Gun](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif**
+
+---
+
+# Round 1: Fixed Size Grid #
+
+Let's say we have a `10x10` grid, with no wraparound. 
+
+How would you implement the Game of Life?
+
+---
+
+# Round 2: Not-So-Fixed-Size Grid #
+
+What if we want to simulate the Game of Life on an "infinite" grid?
+
+---
+
+# Round 2: Not-So-Fixed-Size Grid #
+
+What if we want to simulate the Game of Life on an "infinite** grid?
+
+**hint: sets**
+
+---
+
+# Round 3: In-Place #
+
+For simplicity, let's go back to the `10x10` grid.
+
+What if we want to simulate the Game of Life without making a copy of the original grid?
