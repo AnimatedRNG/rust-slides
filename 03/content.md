@@ -597,3 +597,39 @@ But this can be bad practice, depending on the situation.
 You need to `use` a trait in order to access its methods.
 
 In order to write an `impl`, you must have defined either the type or the trait yourself.
+
+# A Very Abstract Exercise
+
+If you've ever used PyTorch or Tensorflow, you've probably seen something like this:
+
+```python
+a = torch.tensor([3], dtype=torch.uint8)
+b = torch.tensor([3], dtype=torch.uint8)
+
+print(a + b)
+```
+
+PyTorch wraps all the usual arithmetic operators for us.
+
+# A Very Abstract Exercise
+
+```python
+def create_model(a, b):
+    return a * 2 + b
+```
+
+We can define arbitrary computation graphs this way!
+
+# A Very Abstract Exercise
+
+Can you do the same thing in Rust?
+
+```rust
+let a = Expr::constant(3);
+let b = Expr::constant(3);
+
+//Also valid!
+//let b = 3;
+
+let c = (a + b);
+```
