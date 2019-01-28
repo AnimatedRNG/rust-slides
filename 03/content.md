@@ -598,6 +598,8 @@ You need to `use` a trait in order to access its methods.
 
 In order to write an `impl`, you must have defined either the type or the trait yourself.
 
+---
+
 # A Very Abstract Exercise
 
 If you've ever used PyTorch or Tensorflow, you've probably seen something like this:
@@ -611,6 +613,8 @@ print(a + b)
 
 PyTorch wraps all the usual arithmetic operators for us.
 
+---
+
 # A Very Abstract Exercise
 
 ```python
@@ -619,6 +623,8 @@ def create_model(a, b):
 ```
 
 We can define arbitrary computation graphs this way!
+
+---
 
 # A Very Abstract Exercise
 
