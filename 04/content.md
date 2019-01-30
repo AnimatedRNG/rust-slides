@@ -126,7 +126,7 @@ fn returns_closure() -> Fn(i32) -> i32 {
 
 We also can't just return a `Fn` object -- why?
 
-```
+```rust
 error[E0277]: the trait bound `std::ops::Fn(i32) -> i32 + 'static:
 std::marker::Sized` is not satisfied
  -->
@@ -329,4 +329,124 @@ fn main() {
 }
 ```
 
-You should see a mix of 
+`thread::spawn` takes a closure as an argument
+
+---
+
+# Concurrency
+
+`thread::spawn` returns a `JoinHandle`, upon which we can call `.join()` to wait for the other threads
+
+```rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {} from the spawned thread!", i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!("hi number {} from the main thread!", i);
+        thread::sleep(Duration::from_millis(1));
+    }
+
+    handle.join().unwrap();
+}
+```
+
+---
+
+# Revisiting Closures
+
+```rust
+let v = vec![1, 2, 3];
+
+let handle = std::thread::spawn(|| {
+    println!("Here's a vector: {:?}", v);
+});
+
+handle.join().unwrap();
+```
+
+What's wrong with this code?
+
+---
+
+# Revisiting Closures
+
+```rust
+let v = vec![1, 2, 3];
+
+let handle = std::thread::spawn(|| {
+    println!("Here's a vector: {:?}", v);
+});
+
+handle.join().unwrap();
+```
+
+What's wrong with this code?
+
+```rust
+error[E0373]: closure may outlive the current function, but it borrows `v`,
+which is owned by the current function
+ --> src/main.rs:6:32
+  |
+6 |     let handle = thread::spawn(|| {
+  |                                ^^ may outlive borrowed value `v`
+7 |         println!("Here's a vector: {:?}", v);
+  |                                           - `v` is borrowed here
+  |
+```
+
+---
+
+# Lifetimes and Threads
+
+We don't know how long our new thread will run, so we don't know if our reference will always be valid!
+
+We can make even more dangerous scenarios this way
+
+```rust
+let v = vec![1, 2, 3];
+
+let handle = std::thread::spawn(|| {
+    println!("Here's a vector: {:?}", v);
+});
+
+drop(v);
+
+handle.join().unwrap();
+```
+
+---
+
+# `move` to the Rescue!
+
+```rust
+let v = vec![1, 2, 3];
+
+let handle = std::thread::spawn(move || {
+    println!("Here's a vector: {:?}", v);
+});
+
+handle.join().unwrap();
+```
+
+`move` transfers ownership of captured variables into the closure.
+
+---
+
+# Concurrency
+
+Data races are impossible in safe Rust.
+
+A data race happens when two threads try to access the same location at memory at once, and
+
+* One of the accesses is a write
+* One of the accesses is unsynchronized
+
+Rust cannot prevent general race conditions. This is a tall order.
