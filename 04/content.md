@@ -450,3 +450,104 @@ A data race happens when two threads try to access the same location at memory a
 * One of the accesses is unsynchronized
 
 Rust cannot prevent general race conditions. This is a tall order.
+
+---
+
+# `Mutex<T>`
+
+There is a `Mutex<T>` type in Rust for sharing mutable data between threads.
+
+`Mutex::lock` will lock the mutex and return a `Result<MutexGuard<T>>` which indicates *whether or not any other thread has panicked while holding the mutex*.
+
+The `MutexGuard<T>` object derefs to `T` and automatically unlocks the mutex when dropped.
+
+
+---
+
+# `Arc<T>`
+
+`Arc<T>` is a ref-counted smart pointer that increments **atomically**. 
+
+It is safe to share `Arc` between threads (unlike `Rc`).
+
+```
+use std::sync::Arc;
+use std::thread;
+
+let five = Arc::new(5);
+
+for _ in 0..10 {
+    let five = Arc::clone(&five);
+
+    thread::spawn(move || {
+        println!("{:?}", five);
+    });
+}
+```
+
+Other than that, it's just like `Rc`
+
+---
+
+# `Arc<Mutex<T>>`
+
+```rust
+
+use std::sync::{Arc, Mutex};
+use std::thread;
+use std::sync::mpsc::channel;
+
+const N: usize = 10;
+let data = Arc::new(Mutex::new(0));
+
+let (tx, rx) = channel();
+for _ in 0..N {
+    let (data, tx) = (Arc::clone(&data), tx.clone());
+    thread::spawn(move || {
+        let mut data = data.lock().unwrap();
+        *data += 1;
+        if *data == N {
+            tx.send(()).unwrap();
+        }
+        // the lock is unlocked here when `data` is dropped.
+    });
+}
+
+rx.recv().unwrap();
+```
+
+---
+
+# `mpsc`
+
+Like Go, Rust also has channels. There are three types that handle message-passing over channels.
+
+* `Sender` -- Sends on an asynchronous, infinitely buffered channel
+* `SyncSender` -- Sends on a synchronous, bounded channel
+* `Receiver` -- Receives data from either type of `Sender`
+
+As the name `mpsc` suggests, you can have multiple senders but only one receiver.
+
+The `channel` function creates a `Sender` and a `Receiver`.
+
+---
+
+# `mpsc` in action
+
+```rust
+use std::thread;
+use std::sync::mpsc::channel;
+
+let (tx, rx) = channel();
+for i in 0..10 {
+    let tx = tx.clone();
+    thread::spawn(move|| {
+        tx.send(i).unwrap();
+    });
+}
+
+for _ in 0..10 {
+    let j = rx.recv().unwrap();
+    assert!(0 <= j && j < 10);
+}
+```
